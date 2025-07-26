@@ -268,6 +268,161 @@
         margin-bottom: 30px;
       }
     }
+    /* Portfolio card styles */
+.portfolio-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  overflow: hidden;
+  width: 300px;
+  transition: transform 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+.portfolio-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card-image {
+  position: relative;
+}
+
+.card-title-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hover-enabled .card-image:hover .card-title-overlay {
+  opacity: 1;
+}
+
+.overlay-pinned .card-title-overlay {
+  opacity: 1;
+}
+
+.card-content {
+  padding: 20px;
+  text-align: left;
+}
+
+.card-content h3 {
+  margin-top: 0;
+}
+
+.card-content .tags span {
+  display: inline-block;
+  background: #eef;
+  color: #007cf0;
+  padding: 5px 10px;
+  border-radius: 15px;
+  margin: 5px 5px 0 0;
+  font-size: 14px;
+}
+
+.demo-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #007cf0;
+  color: white;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.demo-button:hover {
+  background-color: #005bb5;
+}
+/* Portfolio card styles */
+.portfolio-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  overflow: hidden;
+  width: 300px;
+  transition: transform 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+.portfolio-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card-image {
+  position: relative;
+}
+
+.card-title-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hover-enabled .card-image:hover .card-title-overlay {
+  opacity: 1;
+}
+
+.overlay-pinned .card-title-overlay {
+  opacity: 1;
+}
+
+.card-content {
+  padding: 20px;
+  text-align: left;
+}
+
+.card-content h3 {
+  margin-top: 0;
+}
+
+.card-content .tags span {
+  display: inline-block;
+  background: #eef;
+  color: #007cf0;
+  padding: 5px 10px;
+  border-radius: 15px;
+  margin: 5px 5px 0 0;
+  font-size: 14px;
+}
+
+.demo-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #007cf0;
+  color: white;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.demo-button:hover {
+  background-color: #005bb5;
+}
+
   </style>
 </head>
 
@@ -326,14 +481,55 @@
     </div>
   </section>
 
+  
+
   <section id="portfolio" class="section">
+
     <h2>Our Portfolio</h2>
+
     <div class="portfolio">
-      <div class="portfolio-item"><h3>Project A</h3><p>Web + Branding</p></div>
-      <div class="portfolio-item"><h3>Project B</h3><p>Mobile App</p></div>
-      <div class="portfolio-item"><h3>Project C</h3><p>Design & Development</p></div>
+
+      <div class="portfolio-card hover-enabled" id="portfolioCard">
+
+        <div class="card-image" id="imageArea">
+
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqcEHQHO9ryOZrL8tDT-soRPQBSEa9jTe9VQ12LP_M-Y32Up4C7nkqY9U&s=10" alt="AIN Traders Preview" />
+
+          <div class="card-title-overlay" id="overlay">
+
+            <h2>AIN Traders</h2>
+
+            <p>Click to preview</p>
+
+          </div>
+
+        </div>
+
+        <div class="card-content">
+
+          <h3><a href="#">Sportsvartha</a></h3>
+
+          <p>Sportsvartha is a uthentic sports news website and media.</p>
+
+          <div class="tags">
+
+            <span>Raspberry Pi</span><span>Python</span><span>IoT</span><span>React</span><span>Node.js</span>
+
+          </div>
+
+          <a href="#" class="demo-button">🔗 Live Demo</a>
+
+        </div>
+
+      </div>
+
     </div>
+
   </section>
+
+  
+
+
 
   <section id="testimonials" class="section">
     <h2>What Clients Say</h2>
@@ -373,6 +569,25 @@
     function toggleMenu() {
       document.getElementById("navList").classList.toggle("active");
     }
+    function toggleMenu() {
+    document.getElementById("navList").classList.toggle("active");
+  }
+
+  // Portfolio overlay toggle logic
+  const card = document.getElementById("portfolioCard");
+  const imageArea = document.getElementById("imageArea");
+  let overlayPinned = false;
+
+  imageArea.addEventListener("click", () => {
+    overlayPinned = !overlayPinned;
+    if (overlayPinned) {
+      card.classList.add("overlay-pinned");
+      card.classList.remove("hover-enabled");
+    } else {
+      card.classList.remove("overlay-pinned");
+      card.classList.add("hover-enabled");
+    }
+  });
   </script>
 </body>
 </html>
