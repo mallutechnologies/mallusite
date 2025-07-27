@@ -178,69 +178,104 @@
       margin-top: 40px;
     }
 
-    .contact-section {
-      padding: 60px 20px;
-      background: linear-gradient(to right, #f5f7fa, #c3cfe2);
-      font-family: 'Segoe UI', sans-serif;
+    
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
     }
 
-    .contact-container {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      gap: 30px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .contact-form, .contact-map {
-      flex: 1 1 450px;
-      background: #fff;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-    }
-
-    .contact-form h2,
-    .contact-map h2 {
-      margin-bottom: 20px;
-      color: #333;
-      font-size: 22px;
-    }
-
-    .contact-form form input,
-    .contact-form form textarea {
-      width: 100%;
-      padding: 14px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      font-size: 16px;
-      resize: vertical;
-      transition: border 0.3s ease;
-    }
-
-    .contact-form form input:focus,
-    .contact-form form textarea:focus {
-      border-color: #007BFF;
-      outline: none;
-    }
-
-    .contact-form form button {
-      padding: 12px 20px;
-      background-color: #007BFF;
-      border: none;
+    /* WhatsApp Floating Button */
+    .whatsapp-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
       color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 12px 20px;
       font-size: 16px;
-      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
       cursor: pointer;
-      width: 100%;
-      transition: background-color 0.3s ease;
+      z-index: 1000;
     }
 
-    .contact-form form button:hover {
-      background-color: #0056b3;
+    .whatsapp-button img {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
     }
+
+    /* Contact Form */
+    #contactForm {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 300px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      display: none;
+      z-index: 1000;
+    }
+
+    #contactForm h3 {
+      margin-top: 0;
+      text-align: center;
+      color: #333;
+    }
+
+    #contactForm input,
+    #contactForm textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    #contactForm button {
+      background-color: #25D366;
+      color: white;
+      padding: 10px;
+      border: none;
+      width: 100%;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #contactForm .close-btn {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: #aaa;
+    }
+
+    #successMsg, #errorMsg {
+      font-size: 14px;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    #successMsg {
+      color: green;
+    }
+
+    #errorMsg {
+      color: red;
+    }
+  </style>
+
 
     .contact-map iframe {
       width: 100%;
@@ -447,6 +482,14 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
+    <meta charset="UTF-8">
+  <title>Floating WhatsApp Contact Form</title>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+    }
   </header>
 
   <section class="hero">
@@ -539,17 +582,16 @@
     </div>
   </section>
 
-  <section id="contact" class="contact-section">
-    <div class="contact-container">
-      <div class="contact-form">
-        <h2>Contact Us</h2>
-        <form action="https://formsubmit.co/your@email.com" method="POST">
-          <input type="text" name="name" placeholder="Your Name" required>
-          <input type="email" name="email" placeholder="Your Email" required>
-          <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
-          <button type="submit">Send Message</button>
-        </form>
-      </div>
+  <form id="contactForm">
+  <button type="button" class="close-btn" onclick="toggleForm()">×</button>
+  <h3>Contact Us</h3>
+  <input type="text" name="from_name" placeholder="Your Name" required>
+  <input type="email" name="from_email" placeholder="Your Email" required>
+  <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+  <button type="submit">Send</button>
+  <div id="successMsg"></div>
+  <div id="errorMsg"></div>
+</form>
 
       <div class="contact-map">
         <h2>Find Us</h2>
@@ -587,6 +629,27 @@
       card.classList.remove("overlay-pinned");
       card.classList.add("hover-enabled");
     }
+  });
+    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS Public Key
+
+  function toggleForm() {
+    const form = document.getElementById("contactForm");
+    form.style.display = form.style.display === "block" ? "none" : "block";
+  }
+
+  document.getElementById("contactForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    document.getElementById("successMsg").innerText = "";
+    document.getElementById("errorMsg").innerText = "";
+
+    emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", this)
+      .then(() => {
+        document.getElementById("successMsg").innerText = "Message sent!";
+        this.reset();
+      })
+      .catch(() => {
+        document.getElementById("errorMsg").innerText = "Failed to send. Try again.";
+      });
   });
   </script>
 </body>
