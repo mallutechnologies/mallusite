@@ -498,6 +498,49 @@
   color: #aaa;
 }
 
+    
+  .about-section {
+    background: linear-gradient(to right, #e0f7ff, #ffffff);
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  .about-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    padding: 40px 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .about-container h2 {
+    font-size: 32px;
+    color: #2d9cdb;
+    margin-bottom: 20px;
+  }
+
+  .about-container p {
+    font-size: 18px;
+    color: #333;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 600px) {
+    .about-container {
+      padding: 30px 20px;
+    }
+
+    .about-container h2 {
+      font-size: 26px;
+    }
+
+    .about-container p {
+      font-size: 16px;
+    }
+  }
+
+
   </style>
 </head>
 
@@ -614,17 +657,14 @@
     </div>
   </section>
 
-  <section id="contact" class="contact-section">
-    <div class="contact-container">
-      <div class="contact-form">
-        <h2>Contact Us</h2>
-        <form action="https://formsubmit.co/your@email.com" method="POST">
-          <input type="text" name="name" placeholder="Your Name" required>
-          <input type="email" name="email" placeholder="Your Email" required>
-          <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
-          <button type="submit">Send Message</button>
-        </form>
-      </div>
+  <section class="about-section">
+  <div class="about-container">
+    <h2>About Us</h2>
+    <p>
+      We are one of the leading marketing experts and web design & software development companies based in Kochi. With over 2 years of proven experience and a portfolio of more than 100 successful projects across the globe, we help businesses grow through smart, creative, and scalable digital solutions.
+    </p>
+  </div>
+</section>
       <!-- Add to the END of your <body> before </body> -->
 
 <!-- WhatsApp Floating Button -->
