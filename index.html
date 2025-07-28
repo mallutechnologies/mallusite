@@ -539,7 +539,157 @@
       font-size: 16px;
     }
   }
+.footer {
+      background-color: #f7fbff;
+      color: #333;
+      padding: 60px 20px 20px;
+      text-align: center;
+    }
 
+    .footer h2 {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .footer p {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .footer .btn {
+      background-color: #3b82f6;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      display: inline-block;
+      margin-bottom: 50px;
+      transition: 0.3s;
+    }
+
+    .footer .btn:hover {
+      background-color: #2563eb;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: left;
+      gap: 40px;
+    }
+
+    .footer-column {
+      flex: 1 1 180px;
+      min-width: 160px;
+    }
+
+    .footer-column h4 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #111;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: #444;
+    }
+
+    .footer-column ul li a {
+      text-decoration: none;
+      color: #444;
+    }
+
+    .footer-column ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #ddd;
+      margin-top: 40px;
+      padding-top: 20px;
+      font-size: 13px;
+      color: #888;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      gap: 20px;
+    }
+
+    .footer-bottom a {
+      color: #666;
+      text-decoration: none;
+      margin-left: 15px;
+    }
+
+    .footer-bottom a:hover {
+      text-decoration: underline;
+    }
+
+    /* RESPONSIVE STYLES */
+    @media (max-width: 1024px) {
+      .footer-content {
+        justify-content: space-around;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .footer-column {
+        width: 100%;
+        max-width: 400px;
+        margin-bottom: 30px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+      }
+
+      .footer-bottom a {
+        margin: 0 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer h2 {
+        font-size: 22px;
+      }
+
+      .footer .btn {
+        font-size: 13px;
+        padding: 10px 20px;
+      }
+
+      .footer p {
+        font-size: 13px;
+      }
+    }
 
   </style>
 </head>
@@ -706,9 +856,62 @@
     </div>
   </section>
 
-  <footer>
-    <p>&copy; 2025 Mallu Technologies. All rights reserved.</p>
+  <footer class="footer">
+    <h2>Speak With Our Experts</h2>
+    <p>Talk to our expert team in branding, web, and app development. Schedule your appointment anytime.</p>
+    <a href="#" class="btn">Reserve Your Spot →</a>
+
+    <div class="footer-content">
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <ul>
+          <li>📞 7994842671</li>
+          <li>🏢 Edappaly,Kochi<br>Kerala,Near Lulu Mall</li>
+          <li>✉️ mallu@technologies@gmail.com</li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Success Stories</a></li>
+          <li><a href="#">Discover</a></li>
+          <li><a href="#">Care</a></li>
+          <li><a href="#">Download App</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Solution</h4>
+        <ul>
+          <li><a href="#">Get in Touch</a></li>
+          <li><a href="#">Technology</a></li>
+          <li><a href="#">Who We’re</a></li>
+          <li><a href="#">Expertise</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Follow Us</h4>
+        <ul>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="https://www.instagram.com/mallutechnologies/">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/in/mallutechnologies/">LinkedIn</a></li>
+          <li><a href="#">Twitter</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© Copyright <strong>mallutechnologies.com</strong>. All rights reserved. 2025</div>
+      <div>
+        <a href="#">Privacy & Policy</a>
+        <a href="#">Terms & Condition</a>
+      </div>
+    </div>
   </footer>
+
 
   <script>
     function toggleMenu() {
