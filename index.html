@@ -645,109 +645,99 @@
     }
 
     /* RESPONSIVE STYLES */
-   @media (max-width: 1024px) {
-  .footer-content {
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 40px;
-    padding: 0 40px;
-  }
-
-  .footer-column {
-    flex: 1 1 40%;
-    max-width: 45%;
-  }
+  .mobile-footer {
+  background: #5f6ff4;
+  color: white;
+  padding: 20px;
+  border-radius: 25px 25px 0 0;
+  font-family: 'Segoe UI', sans-serif;
+  max-width: 450px;
+  margin: auto;
 }
 
-@media (max-width: 768px) {
-  .footer {
-    padding: 50px 20px 30px;
-  }
-
-  .footer-content {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 40px;
-  }
-
-  .footer-column {
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 25px;
-  }
-
-  .footer-column h4 {
-    font-size: 18px;
-    margin-bottom: 12px;
-  }
-
-  .footer-column ul li {
-    font-size: 14px;
-    margin-bottom: 8px;
-  }
-
-  .footer-column p,
-  .footer p {
-    font-size: 14px;
-    line-height: 1.6;
-    margin: 6px 0;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    text-align: center;
-    padding-top: 25px;
-    border-top: 1px solid #ccc;
-    gap: 12px;
-  }
-
-  .footer-bottom a {
-    font-size: 14px;
-    margin: 0 10px;
-  }
-
-  .footer .btn {
-    font-size: 14px;
-    padding: 10px 24px;
-    margin-top: 15px;
-  }
+.footer-logo {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-@media (max-width: 480px) {
-  .footer {
-    padding: 40px 16px 25px;
-  }
-
-  .footer h2 {
-    font-size: 20px;
-    margin-bottom: 12px;
-  }
-
-  .footer-column h4 {
-    font-size: 16px;
-  }
-
-  .footer-column ul li {
-    font-size: 13px;
-    margin-bottom: 6px;
-  }
-
-  .footer-column p {
-    font-size: 13px;
-    margin: 5px 0;
-  }
-
-  .footer .btn {
-    font-size: 13px;
-    padding: 9px 20px;
-  }
-
-  .footer-bottom {
-    font-size: 13px;
-    padding-top: 20px;
-  }
+.footer-logo img {
+  height: 40px;
+  margin-bottom: 5px;
 }
+
+.footer-logo h2 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.footer-links details {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.footer-links summary {
+  font-size: 15px;
+  list-style: none;
+  outline: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-links summary::-webkit-details-marker {
+  display: none;
+}
+
+.footer-links ul {
+  padding-left: 15px;
+  margin-top: 10px;
+}
+
+.footer-links li {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom-links {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.footer-bottom-links .row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.footer-bottom-links a {
+  font-size: 13px;
+  color: white;
+  text-decoration: none;
+}
+
+.footer-bottom-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom-links .copyright {
+  font-size: 12px;
+  color: #e0e0e0;
+  justify-content: center;
+  text-align: center;
+}
+
 
   </style>
 </head>
@@ -914,61 +904,65 @@
     </div>
   </section>
 
-  <footer class="footer">
-    <h2>Speak With Our Experts</h2>
-    <p>Talk to our expert team in branding, web, and app development. Schedule your appointment anytime.</p>
-    <a href="#" class="btn">Reserve Your Spot →</a>
+  <footer class="mobile-footer">
+  <div class="footer-logo">
+    <img src="logo.png" alt="Logo" />
+    <h2>Mallu Technologies</h2>
+  </div>
 
-    <div class="footer-content">
-      <div class="footer-column">
-        <h4>Contact</h4>
-        <ul>
-          <li>📞 7994842671</li>
-          <li>🏢 Edappaly,Kochi<br>Kerala,Near Lulu Mall</li>
-          <li>✉️ mallu@technologies@gmail.com</li>
-        </ul>
-      </div>
+  <div class="footer-links">
+    <details>
+      <summary>Contact</summary>
+      <ul>
+        <li>📞 7994842671</li>
+        <li>🏢 Edappaly, Kochi<br>Kerala, Near Lulu Mall</li>
+        <li>✉️ mallu@technologies@gmail.com</li>
+      </ul>
+    </details>
 
-      <div class="footer-column">
-        <h4>Navigate</h4>
-        <ul>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Success Stories</a></li>
-          <li><a href="#">Discover</a></li>
-          <li><a href="#">Care</a></li>
-          <li><a href="#">Download App</a></li>
-        </ul>
-      </div>
+    <details>
+      <summary>Navigate</summary>
+      <ul>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Success Stories</a></li>
+        <li><a href="#">Discover</a></li>
+        <li><a href="#">Care</a></li>
+        <li><a href="#">Download App</a></li>
+      </ul>
+    </details>
 
-      <div class="footer-column">
-        <h4>Solution</h4>
-        <ul>
-          <li><a href="#">Get in Touch</a></li>
-          <li><a href="#">Technology</a></li>
-          <li><a href="#">Who We’re</a></li>
-          <li><a href="#">Expertise</a></li>
-        </ul>
-      </div>
+    <details>
+      <summary>Solution</summary>
+      <ul>
+        <li><a href="#">Get in Touch</a></li>
+        <li><a href="#">Technology</a></li>
+        <li><a href="#">Who We’re</a></li>
+        <li><a href="#">Expertise</a></li>
+      </ul>
+    </details>
 
-      <div class="footer-column">
-        <h4>Follow Us</h4>
-        <ul>
-          <li><a href="#">Facebook</a></li>
-          <li><a href="https://www.instagram.com/mallutechnologies/">Instagram</a></li>
-          <li><a href="https://www.linkedin.com/in/mallutechnologies/">LinkedIn</a></li>
-          <li><a href="#">Twitter</a></li>
-        </ul>
-      </div>
+    <details>
+      <summary>Follow Us</summary>
+      <ul>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="https://www.instagram.com/mallutechnologies/">Instagram</a></li>
+        <li><a href="https://www.linkedin.com/in/mallutechnologies/">LinkedIn</a></li>
+        <li><a href="#">Twitter</a></li>
+      </ul>
+    </details>
+  </div>
+
+  <div class="footer-bottom-links">
+    <div class="row">
+      <a href="#">Privacy & Policy</a>
+      <a href="#">Terms & Condition</a>
     </div>
-
-    <div class="footer-bottom">
-      <div>© Copyright <strong>mallutechnologies.in</strong>. All rights reserved. 2025</div>
-      <div>
-        <a href="#">Privacy & Policy</a>
-        <a href="#">Terms & Condition</a>
-      </div>
+    <div class="row copyright">
+      © 2025 <strong>mallutechnologies.in</strong>. All rights reserved.
     </div>
-  </footer>
+  </div>
+</footer>
+
 
 
   <script>
