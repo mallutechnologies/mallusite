@@ -690,6 +690,62 @@
         font-size: 13px;
       }
     }
+    /* By default, show desktop, hide mobile */
+.desktop-footer {
+  display: block;
+}
+.mobile-footer {
+  display: none;
+}
+
+/* On small screens, hide desktop and show mobile */
+@media screen and (max-width: 768px) {
+  .desktop-footer {
+    display: none;
+  }
+
+  .mobile-footer {
+    display: block;
+    background-color: #585fd3;
+    color: #fff;
+    padding: 1rem;
+    font-family: sans-serif;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .mobile-footer .logo {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .mobile-footer details {
+    background-color: #4d53c6;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    padding: 0.5rem;
+  }
+
+  .mobile-footer summary {
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+  }
+
+  .mobile-footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    justify-content: space-between;
+  }
+
+  .mobile-footer-links a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
 
   </style>
 </head>
@@ -911,6 +967,38 @@
       </div>
     </div>
   </footer>
+<footer class="mobile-footer">
+  <div class="logo">🌿 <strong>Logo</strong></div>
+
+  <details>
+    <summary>Consecte</summary>
+    <p>random literatures</p>
+  </details>
+  <details>
+    <summary>Renaissance pop...</summary>
+    <p>random literatures</p>
+  </details>
+  <details>
+    <summary>Printer text on</summary>
+    <p>random literatures</p>
+  </details>
+  <details>
+    <summary>About com</summary>
+    <p>random literatures</p>
+  </details>
+  <details>
+    <summary>Follow our</summary>
+    <p>random literatures</p>
+  </details>
+
+  <div class="mobile-footer-links">
+    <a href="#">Contact our</a>
+    <a href="#">Privacy</a>
+    <a href="#">Terms of use</a>
+    <a href="#">random literatures</a>
+    <a href="#">consequetures</a>
+  </div>
+</footer>
 
 
   <script>
