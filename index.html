@@ -23,10 +23,7 @@
       flex-wrap: wrap;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 24px;
-    }
+    header h1 { margin: 0; font-size: 24px; }
 
     nav ul {
       list-style: none;
@@ -36,661 +33,134 @@
       padding: 0;
     }
 
-    nav ul li a {
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-    }
+    nav ul li a { text-decoration: none; color: white; font-weight: bold; }
 
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-
-    .menu-toggle span {
-      height: 3px;
-      width: 25px;
-      background: white;
-      margin: 4px 0;
-    }
+    .menu-toggle { display: none; flex-direction: column; cursor: pointer; }
+    .menu-toggle span { height: 3px; width: 25px; background: white; margin: 4px 0; }
 
     @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex;
-        margin-left: auto; 
-      }
-
+      .menu-toggle { display: flex; margin-left: auto; }
       nav ul {
-        display: none;
-        flex-direction: column;
-        background: #1a1a1a;
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        width: 200px;
-        padding: 15px;
-        border-radius: 10px;
-        z-index: 1000;
+        display: none; flex-direction: column; background: #1a1a1a;
+        position: absolute; top: 60px; right: 20px; width: 200px;
+        padding: 15px; border-radius: 10px; z-index: 1000;
       }
-
-      nav ul.active {
-        display: flex;
-      }
-
-      nav ul li {
-        margin: 10px 0;
-      }
+      nav ul.active { display: flex; }
+      nav ul li { margin: 10px 0; }
     }
 
+    /* --- HERO SECTION --- */
     .hero {
       background: linear-gradient(135deg, #007cf0, #00dfd8);
       color: white;
       text-align: center;
-      padding: 60px 20px;
+      padding: 80px 20px;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
-    .hero h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
+    .hero h1 { font-size: 36px; margin-bottom: 20px; opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s ease forwards; }
 
-    .hero p {
-      font-size: 18px;
+    .hero-animated-text {
+      position: relative;
+      height: 40px; 
+      width: 100%;
       margin-bottom: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
+
+    .hero-animated-text p {
+      position: absolute;
+      margin: 0;
+      font-size: 20px;
+      font-weight: 500;
+      opacity: 0;
+      animation: switchThreeTexts 12s infinite; 
+    }
+
+    .hero-animated-text p:nth-child(2) { animation-delay: 4s; }
+    .hero-animated-text p:nth-child(3) { animation-delay: 8s; }
+
+    @keyframes switchThreeTexts {
+      0% { opacity: 0; transform: translateY(10px); }
+      3% { opacity: 1; transform: translateY(0); }
+      30% { opacity: 1; transform: translateY(0); }
+      33% { opacity: 0; transform: translateY(-10px); }
+      100% { opacity: 0; }
+    }
+
+    @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
     .hero button {
-      background-color: #fff;
-      color: #007cf0;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: 0.3s;
+      background-color: #fff; color: #007cf0; border: none;
+      padding: 12px 30px; font-size: 16px; border-radius: 25px;
+      cursor: pointer; transition: 0.3s; font-weight: bold;
     }
+    .hero button:hover { background-color: #e0e0e0; transform: scale(1.05); }
 
-    .hero button:hover {
-      background-color: #e0e0e0;
+    /* --- SECTIONS --- */
+    .section { padding: 60px 20px; text-align: center; }
+    .services, .portfolio { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .service, .portfolio-card {
+      background-color: white; padding: 20px; border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); width: 280px; transition: transform 0.3s;
     }
+    .service:hover, .portfolio-card:hover { transform: translateY(-5px); }
 
-    .section {
-      padding: 60px 20px;
-      text-align: center;
+    .portfolio-card { width: 300px; overflow: hidden; cursor: pointer; position: relative; }
+    .portfolio-card img { width: 100%; display: block; }
+    .card-title-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: rgba(0,0,0,0.7); color: white; padding: 20px;
+      opacity: 0; transition: opacity 0.3s ease;
     }
+    .hover-enabled .card-image:hover .card-title-overlay,
+    .overlay-pinned .card-title-overlay { opacity: 1; }
 
-    .section h2 {
-      font-size: 28px;
-      margin-bottom: 40px;
-    }
-
-    .services, .portfolio, .testimonials {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .service, .portfolio-item, .testimonial {
-      background-color: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      width: 280px;
-      transition: transform 0.3s;
-    }
-
-    .service:hover, .portfolio-item:hover, .testimonial:hover {
-      transform: translateY(-5px);
-    }
-
-    .quote {
-      font-size: 20px;
-      font-style: italic;
-      padding: 40px;
-      text-align: center;
-      background: #fff7e6;
-      margin: 0 auto;
-    }
-
-    .cta-button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 25px;
-      background-color: #ff6600;
-      color: white;
-      text-decoration: none;
-      border-radius: 30px;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-
-    .cta-button:hover {
-      background-color: #e65c00;
-    }
-
-    footer {
-      background-color: #121212;
-      color: white;
-      text-align: center;
-      padding: 20px 10px;
-      margin-top: 40px;
-    }
-
-    .contact-section {
-      padding: 60px 20px;
-      background: linear-gradient(to right, #f5f7fa, #c3cfe2);
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    .contact-container {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      gap: 30px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .contact-form, .contact-map {
-      flex: 1 1 450px;
-      background: #fff;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-    }
-
-    .contact-form h2,
-    .contact-map h2 {
-      margin-bottom: 20px;
-      color: #333;
-      font-size: 22px;
-    }
-
-    .contact-form form input,
-    .contact-form form textarea {
-      width: 100%;
-      padding: 14px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      font-size: 16px;
-      resize: vertical;
-      transition: border 0.3s ease;
-    }
-
-    .contact-form form input:focus,
-    .contact-form form textarea:focus {
-      border-color: #007BFF;
-      outline: none;
-    }
-
-    .contact-form form button {
-      padding: 12px 20px;
-      background-color: #007BFF;
-      border: none;
-      color: white;
-      font-size: 16px;
-      border-radius: 10px;
-      cursor: pointer;
-      width: 100%;
-      transition: background-color 0.3s ease;
-    }
-
-    .contact-form form button:hover {
-      background-color: #0056b3;
-    }
-
-    .contact-map iframe {
-      width: 100%;
-      height: 300px;
-      border: none;
-      border-radius: 10px;
-    }
-
-    @media (max-width: 768px) {
-      .services, .portfolio, .testimonials {
-        flex-direction: column;
-        align-items: center;
-      }
-      .hero h1 {
-        font-size: 26px;
-      }
-      .hero p {
-        font-size: 16px;
-      }
-      .contact-container {
-        flex-direction: column;
-        padding: 0 10px;
-      }
-      .contact-form, .contact-map {
-        margin-bottom: 30px;
-      }
-    }
-    /* Portfolio card styles */
-.portfolio-card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  overflow: hidden;
-  width: 300px;
-  transition: transform 0.3s;
-  cursor: pointer;
-  position: relative;
-}
-
-.portfolio-card img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.card-image {
-  position: relative;
-}
-
-.card-title-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0,0,0,0.7);
-  color: white;
-  text-align: center;
-  padding: 20px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.hover-enabled .card-image:hover .card-title-overlay {
-  opacity: 1;
-}
-
-.overlay-pinned .card-title-overlay {
-  opacity: 1;
-}
-
-.card-content {
-  padding: 20px;
-  text-align: left;
-}
-
-.card-content h3 {
-  margin-top: 0;
-}
-
-.card-content .tags span {
-  display: inline-block;
-  background: #eef;
-  color: #007cf0;
-  padding: 5px 10px;
-  border-radius: 15px;
-  margin: 5px 5px 0 0;
-  font-size: 14px;
-}
-
-.demo-button {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 8px 16px;
-  background-color: #007cf0;
-  color: white;
-  border-radius: 20px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s;
-}
-
-.demo-button:hover {
-  background-color: #005bb5;
-}
-/* Portfolio card styles */
-.portfolio-card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  overflow: hidden;
-  width: 300px;
-  transition: transform 0.3s;
-  cursor: pointer;
-  position: relative;
-}
-
-.portfolio-card img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.card-image {
-  position: relative;
-}
-
-.card-title-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0,0,0,0.7);
-  color: white;
-  text-align: center;
-  padding: 20px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.hover-enabled .card-image:hover .card-title-overlay {
-  opacity: 1;
-}
-
-.overlay-pinned .card-title-overlay {
-  opacity: 1;
-}
-
-.card-content {
-  padding: 20px;
-  text-align: left;
-}
-
-.card-content h3 {
-  margin-top: 0;
-}
-
-.card-content .tags span {
-  display: inline-block;
-  background: #eef;
-  color: #007cf0;
-  padding: 5px 10px;
-  border-radius: 15px;
-  margin: 5px 5px 0 0;
-  font-size: 14px;
-}
-
-.demo-button {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 8px 16px;
-  background-color: #007cf0;
-  color: white;
-  border-radius: 20px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s;
-}
-
-.demo-button:hover {
-  background-color: #005bb5;
-}
-/* WhatsApp Floating Button */
-.whatsapp-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #25D366;
-  color: white;
-  border: none;
-  border-radius: 30px;
-  padding: 12px 20px;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  z-index: 1000;
-}
-
-.whatsapp-button img {
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
-}
-
-/* Contact Form Popup */
-#floatingContactForm {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  width: 300px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  display: none;
-  z-index: 1000;
-}
-
-#floatingContactForm h3 {
-  margin-top: 0;
-  text-align: center;
-  color: #333;
-}
-
-#floatingContactForm input,
-#floatingContactForm textarea {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
-}
-
-#floatingContactForm button[type="submit"] {
-  background-color: #25D366;
-  color: white;
-  padding: 10px;
-  border: none;
-  width: 100%;
-  border-radius: 6px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.close-btn {
-  position: absolute;
-  top: 8px;
-  right: 12px;
-  background: none;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
-  color: #aaa;
-}
-
-    
-  .about-section {
-    background: linear-gradient(to right, #e0f7ff, #ffffff);
-    padding: 60px 20px;
-    text-align: center;
-  }
-
-  .about-container {
-    max-width: 800px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 12px;
-    padding: 40px 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  }
-
-  .about-container h2 {
-    font-size: 32px;
-    color: #2d9cdb;
-    margin-bottom: 20px;
-  }
-
-  .about-container p {
-    font-size: 18px;
-    color: #333;
-    line-height: 1.7;
-  }
-
-  @media (max-width: 600px) {
+    /* --- ABOUT SECTION --- */
+    .about-section { background: linear-gradient(to right, #e0f7ff, #ffffff); padding: 80px 20px; text-align: center; }
     .about-container {
-      padding: 30px 20px;
+      max-width: 800px; margin: 0 auto; background: white;
+      border-radius: 12px; padding: 40px 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
+    .about-container h2 { font-size: 32px; color: #2d9cdb; margin-bottom: 20px; }
+    .about-container p { font-size: 18px; color: #333; line-height: 1.7; }
 
-    .about-container h2 {
-      font-size: 26px;
+    /* --- FOOTER --- */
+    .footer { background-color: #f7fbff; color: #333; padding: 60px 20px 20px; text-align: center; }
+    .footer h2 { font-size: 28px; font-weight: 600; margin-bottom: 10px; }
+    .footer p { color: #666; font-size: 14px; margin-bottom: 25px; }
+    
+    .reserve-btn {
+      background-color: #3b82f6; color: white; padding: 12px 24px;
+      border-radius: 25px; text-decoration: none; font-weight: 600;
+      display: inline-block; margin-bottom: 50px; transition: 0.3s;
     }
+    .reserve-btn:hover { background-color: #2563eb; }
 
-    .about-container p {
-      font-size: 16px;
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; text-align: left; gap: 40px; }
+    .footer-column { flex: 1 1 200px; }
+    .footer-column h4 { font-size: 15px; font-weight: 600; margin-bottom: 15px; color: #111; }
+    .footer-column ul { list-style: none; padding: 0; }
+    .footer-column ul li { margin-bottom: 10px; font-size: 14px; color: #444; }
+    .footer-column ul li a { text-decoration: none; color: #444; }
+    .footer-column ul li a:hover { text-decoration: underline; }
+
+    .footer-bottom { border-top: 1px solid #ddd; margin-top: 40px; padding-top: 20px; font-size: 13px; color: #888; display: flex; justify-content: space-between; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; }
+
+    .whatsapp-button {
+      position: fixed; bottom: 20px; right: 20px;
+      background-color: #25D366; color: white; border: none;
+      border-radius: 30px; padding: 12px 20px; display: flex;
+      align-items: center; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      cursor: pointer; z-index: 1000;
     }
-  }
-.footer {
-      background-color: #f7fbff;
-      color: #333;
-      padding: 60px 20px 20px;
-      text-align: center;
-    }
-
-    .footer h2 {
-      font-size: 28px;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .footer p {
-      color: #666;
-      font-size: 14px;
-      margin-bottom: 25px;
-      line-height: 1.6;
-    }
-
-    .footer .btn {
-      background-color: #3b82f6;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 25px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 14px;
-      display: inline-block;
-      margin-bottom: 50px;
-      transition: 0.3s;
-    }
-
-    .footer .btn:hover {
-      background-color: #2563eb;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: left;
-      gap: 40px;
-    }
-
-    .footer-column {
-      flex: 1 1 180px;
-      min-width: 160px;
-    }
-
-    .footer-column h4 {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 15px;
-      color: #111;
-    }
-
-    .footer-column ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-column ul li {
-      margin-bottom: 10px;
-      font-size: 14px;
-      color: #444;
-    }
-
-    .footer-column ul li a {
-      text-decoration: none;
-      color: #444;
-    }
-
-    .footer-column ul li a:hover {
-      text-decoration: underline;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid #ddd;
-      margin-top: 40px;
-      padding-top: 20px;
-      font-size: 13px;
-      color: #888;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
-      gap: 20px;
-    }
-
-    .footer-bottom a {
-      color: #666;
-      text-decoration: none;
-      margin-left: 15px;
-    }
-
-    .footer-bottom a:hover {
-      text-decoration: underline;
-    }
-
-    /* RESPONSIVE STYLES */
-    @media (max-width: 1024px) {
-      .footer-content {
-        justify-content: space-around;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .footer-content {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .footer-column {
-        width: 100%;
-        max-width: 400px;
-        margin-bottom: 30px;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 10px;
-      }
-
-      .footer-bottom a {
-        margin: 0 10px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .footer h2 {
-        font-size: 22px;
-      }
-
-      .footer .btn {
-        font-size: 13px;
-        padding: 10px 20px;
-      }
-
-      .footer p {
-        font-size: 13px;
-      }
-    }
-
   </style>
 </head>
 
@@ -698,15 +168,9 @@
 
   <header>
     <h1>Mallu Technologies</h1>
-
-    <!-- Toggle Button -->
     <div class="menu-toggle" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </div>
-
-    <!-- Nav Links -->
     <nav>
       <ul id="navList">
         <li><a href="#services">Services</a></li>
@@ -719,227 +183,111 @@
 
   <section class="hero">
     <h1>Your Partner in Business Growth</h1>
-    <p>Helping business and enterprises to SCALE UP</p>
+    <div class="hero-animated-text">
+      <p>Helping business and enterprises to SCALE UP</p>
+      <p>From Bharath To World</p>
+      <p>Scaled hundreds of businesses globally</p>
+    </div>
     <button onclick="connectUs()">Connect us</button>
   </section>
 
   <section id="services" class="section" style="background: linear-gradient(to right, #f0faff, #e0f7ff);">
-    <h2 style="font-size: 32px; margin-bottom: 30px; color: #007cf0;">Our Services</h2>
+    <h2 style="font-size: 32px; color: #007cf0;">Our Services</h2>
     <div class="services">
-      <div class="service">
-        <div class="service-icon">📈</div>
-        <h3>Business Scaling</h3>
-        <p>Strategies tailored to grow your brand and boost ROI.</p>
-      </div>
-      <div class="service">
-        <div class="service-icon">💻</div>
-        <h3>Web Development</h3>
-        <p>Custom websites that are fast, secure, and scalable.</p>
-      </div>
-      <div class="service">
-        <div class="service-icon">📱</div>
-        <h3>App Development</h3>
-        <p>Mobile apps with modern UI and seamless performance.</p>
-      </div>
-      <div class="service">
-        <div class="service-icon">🎨</div>
-        <h3>Graphic Designing</h3>
-        <p>Creative visuals that make your brand stand out.</p>
-      </div>
+      <div class="service">📈<h3>Business Scaling</h3><p>Strategies tailored to grow your brand and boost ROI.</p></div>
+      <div class="service">💻<h3>Web Development</h3><p>Custom websites that are fast, secure, and scalable.</p></div>
+      <div class="service">📱<h3>App Development</h3><p>Mobile apps with modern UI and performance.</p></div>
+      <div class="service">🎨<h3>Graphic Designing</h3><p>Creative visuals that make your brand stand out.</p></div>
     </div>
   </section>
 
-  
-
-  <section id="portfolio" class="section"style="background: linear-gradient(to right,  #e0f7ff, #e0fff4);">
-
+  <section id="portfolio" class="section" style="background: linear-gradient(to right, #e0f7ff, #e0fff4);">
     <h2>Our Portfolio</h2>
-
     <div class="portfolio">
-
       <div class="portfolio-card hover-enabled" id="portfolioCard">
-
         <div class="card-image" id="imageArea">
-
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqcEHQHO9ryOZrL8tDT-soRPQBSEa9jTe9VQ12LP_M-Y32Up4C7nkqY9U&s=10" alt="AIN Traders Preview" />
-
-          <div class="card-title-overlay" id="overlay">
-
-            <h2>Sportsvartha</h2>
-
-            <p>Click to preview</p>
-
-          </div>
-
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqcEHQHO9ryOZrL8tDT-soRPQBSEa9jTe9VQ12LP_M-Y32Up4C7nkqY9U&s=10" alt="Sportsvartha" />
+          <div class="card-title-overlay"><h2>Sportsvartha</h2><p>Click to preview</p></div>
         </div>
-
-        <div class="card-content">
-
-          <h3><a href="#">Sportsvartha</a></h3>
-
-          <p>Sportsvartha is a uthentic sports news website and media.</p>
-
-          <div class="tags">
-
-            <span>Html</span><span>css</span><span>Javascript</span><span>React</span><span>Node.js</span>
-
-          </div>
-
-          <a href="https://www.sportsvartha.in/?m=1" class="demo-button">🔗 Live Demo</a>
-
+        <div style="padding: 20px; text-align: left;">
+          <h3>Sportsvartha</h3>
+          <p>Authentic sports news website and media.</p>
+          <a href="https://www.sportsvartha.in/?m=1" style="display:inline-block; margin-top:10px; color:#007cf0; text-decoration:none; font-weight:bold;">🔗 Live Demo</a>
         </div>
-
       </div>
-
-    </div>
-
-  </section>
-
-  
-
-
-
-  <section id="testimonials" class="section">
-    <h2>What Clients Say</h2>
-    <div class="testimonials">
-      <div class="testimonial"><p>"Outstanding service and support! Our brand is now stronger than ever."</p><strong>- Client A</strong></div>
-      <div class="testimonial"><p>"Professional and creative team. Highly recommended for startups."</p><strong>- Client B</strong></div>
     </div>
   </section>
 
   <section id="aboutus" class="about-section">
-  <div class="about-container">
-    <h2>About Us</h2>
-    <p>
-      We are one of the leading marketing experts and web design & software development companies based in Kochi. With over 2 years of proven experience and a portfolio of more than 100 successful projects across the globe, we help businesses grow through smart, creative, and scalable digital solutions.
-    </p>
-  </div>
-</section>
-      <!-- Add to the END of your <body> before </body> -->
-
-<!-- WhatsApp Floating Button -->
-<button class="whatsapp-button" onclick="connectUs()">
-  <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" alt="WhatsApp Icon" />
-  Chat with us
-</button>
-
-<!-- Popup Contact Form -->
-<div id="floatingContactForm">
-  <button type="button" class="close-btn" onclick="toggleForm()">×</button>
-  <h3>Contact Us</h3>
-  <form action="https://formsubmit.co/mallutechnologies@gmail.com" method="POST">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="box">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
-    <button type="submit">Send</button>
-  </form>
-</div>
-
-<!-- Add JS to toggle form -->
-<script>
-  function toggleForm() {
-    const form = document.getElementById("floatingContactForm");
-    form.style.display = form.style.display === "block" ? "none" : "block";
-  }
-</script>
-
-
-      <div class="contact-map">
-        <h2>Find Us</h2>
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.445024758064!2d76.30488951533433!3d10.021923092830164"
-          allowfullscreen="" loading="lazy">
-        </iframe>
-      </div>
+    <div class="about-container">
+      <h2>About Us</h2>
+      <p>We are one of the leading marketing experts and web design & software development companies based in Kochi. With over 2 years of proven experience and a portfolio of more than 100 successful projects across the globe, we help businesses grow through smart, creative, and scalable digital solutions.</p>
     </div>
   </section>
+
+  <button class="whatsapp-button" onclick="connectUs()">
+    <img src="https://img.icons8.com/ios-filled/24/ffffff/whatsapp.png" alt="Icon" style="margin-right:10px"/>
+    Chat with us
+  </button>
 
   <footer class="footer">
     <h2>Speak With Our Experts</h2>
     <p>Talk to our expert team in branding, web, and app development. Schedule your appointment anytime.</p>
-    <a href="#" class="btn" onclick="connectUs()">Reserve Your Spot →</a>
+    <a href="#" class="reserve-btn" onclick="connectUs()">Reserve Your Spot →</a>
 
     <div class="footer-content">
       <div class="footer-column">
         <h4>Contact</h4>
         <ul>
           <li>📞 7994842671</li>
-          <li>🏢 Edappaly,Kochi<br>Kerala,Near Lulu Mall</li>
+          <li>🏢 Edappaly, Kochi, Kerala</li>
           <li>✉️ mallutechnologies@gmail.com</li>
         </ul>
       </div>
-
       <div class="footer-column">
         <h4>Navigate</h4>
         <ul>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Success Stories</a></li>
-          <li><a href="#">Discover</a></li>
-          <li><a href="#">Care</a></li>
-          <li><a href="#">Download App</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Success Stories</a></li>
+          <li><a href="#aboutus">Who We Are</a></li>
         </ul>
       </div>
-
       <div class="footer-column">
         <h4>Solution</h4>
         <ul>
-          <li><a href="#">Get in Touch</a></li>
+          <li><a href="#" onclick="connectUs()">Get in Touch</a></li>
           <li><a href="#">Technology</a></li>
-          <li><a href="#">Who We’re</a></li>
-          <li><a href="#">Expertise</a></li>
+          <li><a href="#aboutus">Who We’re</a></li>
+          <li><a href="#services">Expertise</a></li>
         </ul>
       </div>
-
       <div class="footer-column">
         <h4>Follow Us</h4>
         <ul>
-          <li><a href="#">Facebook</a></li>
           <li><a href="https://www.instagram.com/mallutechnologies/">Instagram</a></li>
           <li><a href="https://www.linkedin.com/in/mallutechnologies/">LinkedIn</a></li>
-          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Facebook</a></li>
         </ul>
       </div>
     </div>
-
     <div class="footer-bottom">
-      <div>© Copyright <strong>mallutechnologies.in</strong>. All rights reserved. 2025</div>
-      <div>
-        <a href="#">Privacy & Policy</a>
-        <a href="#">Terms & Condition</a>
-      </div>
+      <div>© Copyright mallutechnologies.in. All rights reserved. 2026</div>
+      <div><a href="#" style="color:#666; text-decoration:none; margin-left:15px;">Privacy Policy</a></div>
     </div>
   </footer>
 
-
   <script>
-    function connectUs() {
+    function connectUs() { window.open("https://wa.me/7994842671", "_blank"); }
+    function toggleMenu() { document.getElementById("navList").classList.toggle("active"); }
 
-      window.open("https://wa.me/7994842671", "_blank");
-    }
-    function toggleMenu() {
-      document.getElementById("navList").classList.toggle("active");
-    }
-    function toggleMenu() {
-    document.getElementById("navList").classList.toggle("active");
-  }
-
-  // Portfolio overlay toggle logic
-  const card = document.getElementById("portfolioCard");
-  const imageArea = document.getElementById("imageArea");
-  let overlayPinned = false;
-
-  imageArea.addEventListener("click", () => {
-    overlayPinned = !overlayPinned;
-    if (overlayPinned) {
-      card.classList.add("overlay-pinned");
-      card.classList.remove("hover-enabled");
-    } else {
-      card.classList.remove("overlay-pinned");
-      card.classList.add("hover-enabled");
-    }
-  });
+    const card = document.getElementById("portfolioCard");
+    const imageArea = document.getElementById("imageArea");
+    let overlayPinned = false;
+    imageArea.addEventListener("click", () => {
+      overlayPinned = !overlayPinned;
+      card.classList.toggle("overlay-pinned", overlayPinned);
+      card.classList.toggle("hover-enabled", !overlayPinned);
+    });
   </script>
 </body>
 </html>
